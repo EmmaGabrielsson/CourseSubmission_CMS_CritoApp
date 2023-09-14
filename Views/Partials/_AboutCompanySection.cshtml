@@ -1,0 +1,48 @@
+﻿@using Umbraco.Cms.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+        <section class="about-section ">
+            <div>
+                @{
+                    var ceoImage = Model.Value<MediaWithCrops>("ceoImage");
+                    
+                    if (ceoImage != null)
+                    {
+                        <img src="@ceoImage.MediaUrl()" alt="@Model.Value("ceoImageAltText")"/>
+                    }
+                }
+                <div class="img-infobox">
+                    <h5>@Model.Value("ceoName"), <span class="red-title">@Model.Value("ceoTitle")</span></h5>
+                    <p>@Model.Value("ceoDescription")</p>
+                </div>
+            </div>
+            <div>
+                <p class="red-title">About Company</p>
+                <h3>@Model.Value("aboutTitle")</h3>
+                <p class="text">@Model.Value("aboutDescription")</p>
+                <div class="about-btn-container">
+                    <a target="_blank" class="about-btn text-decoration-none" href="/services" title="learn more">Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+                        </svg>
+                    </a>
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn play-btn" type="button" title="play intro video">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                          </svg>
+                    </button>
+                    <p class="mb-0">Intro Video</p>
+                </div>
+                    <div class="modal .modal-fullscreen" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h2 class="modal-title fs-5" id="exampleModalLabel">Crito - Intro Video</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                            <iframe class="object-fit-contain" src="https://www.youtube.com/embed/8Dfk_tZt13k?list=PLU9il4c3BBUXS1IsXq8FXx-UQFb22Kge5" title="Professional Free Stock Videos - Professional Stock Footage - Professional No Copyright Videos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen ></iframe>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+        </section>
