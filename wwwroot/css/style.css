@@ -555,10 +555,6 @@ header img {
     margin-bottom: 2rem;
 }
 
-.project-section div div img {
-    max-width: 100%;
-}
-
 .project-section div {
     display: flex;
     justify-content: center;
@@ -570,25 +566,25 @@ header img {
 
 .project-section div div {
     width: 500px;
-    margin: 0 1rem;
+    margin-bottom: 2.5rem;
+    margin-right: 1rem;
     justify-content: flex-start;
 }
 
-.project-section div div img{
-    max-width: 465px;
+.project-section div div img {
+    width: 97%;
 }
 
 .project-content {
     background-color: white;
-    width: 100%;
-    position: absolute;
-    right: 1rem;
-    bottom: 3rem;
+    width: 100%;  
+    margin: 0 0 4rem 0;
+    border-bottom: 1px solid #19191996;
 }
 
 .project-section div div div a {
     position: absolute;
-    bottom: -2rem;
+    bottom: -2.5rem;
     right: 0;
     text-decoration: none;
     cursor: pointer;
@@ -606,8 +602,7 @@ header img {
     font-family: "DM Sans";
     font-size: 22px;
     font-weight: bold;
-    border-bottom: 1px solid #19191996;
-    padding: 25px 0 10px 0;
+    padding-top: 5px;
 }
 
 .project-section .all-project-btn {
@@ -708,7 +703,7 @@ header img {
     font-family: "DM Sans";
     font-size: 45px;
     font-weight: bold;
-    margin-bottom: 2rem;;
+    margin-bottom: 2rem;
 }
 
 .reviewerbox {
@@ -784,6 +779,98 @@ header img {
     display: none;
 }
 
+.news-section {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.news-section div {
+    width: 90%;
+}
+
+.news-section div h3 {
+    font-family: "DM Sans";
+    font-size: 45px;
+    font-weight: bold;
+    color: #191919;
+    margin-top: 4rem;
+}
+
+.news-section div .articles {
+    margin: 1rem 1rem 3rem 0;
+    width: 400px;
+    position: relative;
+}
+
+.news-section div .articles a .date-container {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #F9D783;
+    width: 55px;
+    height: 64px;
+    text-align: center;
+    padding: 2px;
+}
+
+.news-section div .articles a .date-container .day {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    font-family: "DM Sans";
+}
+
+.news-section div .articles a .date-container .month {
+    text-transform: capitalize;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: "Inter";
+}
+
+.news-section div .articles a {
+    text-decoration: none;
+    color: black;
+}
+
+.news-section div .articles a:hover {
+    background-color: #f9d783;
+}
+
+.news-section div .articles a img {
+    width: 100%;
+    height: 230px;
+    margin-bottom: 1rem;
+}
+
+.news-section div .articles a h5 {
+    font-family: "DM Sans";
+    font-size: 22px;
+    font-weight: bold;
+}
+.news-section div nav {
+    margin-bottom: 4rem;
+}
+
+.news-section div nav a {
+    text-decoration: none;
+    color: black;
+    border: 1px solid #00000087;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 6px;
+    margin: 3px;
+}
+
+.news-section div nav a:hover {
+    background-color: black;
+    color: white;
+}
+
 .contact-section .info-container {
     background-color: white;
     display: flex;
@@ -809,7 +896,7 @@ header img {
 .contact-section div div div {
     border-radius: 40px;
     padding: 10px;
-    height: content;
+    height: 100%;
     width: auto;
 }
 
@@ -1156,7 +1243,11 @@ header img {
         left: 0;
         top: 14rem;    
     }
-    
+
+    .news-section div {
+        width: 75%;
+    }
+
     .contact-section div {
         display: flex;
         justify-content: center;

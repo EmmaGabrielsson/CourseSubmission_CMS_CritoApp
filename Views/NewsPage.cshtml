@@ -1,6 +1,79 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.NewsPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.PublishedContent;
 @{
-	Layout = "_LayoutWithBredcrumb.cshtml";
+    Layout = "_LayoutWithBredcrumb.cshtml";
+
+    var itemsPerPage = 6;
+    var pageNumber = 1;
+
+    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
+    {
+        pageNumber = 1;        
+    }
+	
+	var selection = Umbraco?.Content(Guid.Parse("375dc09f-9d8e-4a68-a309-135d420bef13"))?
+            .ChildrenOfType("articleDetailPage")?
+            .Where(x => x.IsVisible())
+            .OrderByDescending(x => x.CreateDate).ToList();
+            
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
+            
 }
+
+
+<section class="news-section">
+    <div>
+        <div>
+            <h3>Our News & Articles</h3>
+        </div>
+        <div class="articles">
+            
+        @if(pagedItems != null){
+        
+            @foreach (var item in pagedItems)
+        	{
+        	    var url = item.Url();
+        	    var date = item.CreateDate;
+        	    var image = item.Value<IPublishedContent>("articleImage");
+        	    var category = item.Value("articleCategory");
+        	    var title = item.Name();
+        	    var shortDescription = item.Value("articleShortDescription");
+        	    
+            	<a href="@url">
+                    <div class="date-container">
+                        <p class="day">@date.ToString("dd")</p>
+                        <p class="month">@date.ToString("MMM")</p>
+                    </div>
+                    <img src="@image?.Url()" alt=""/>
+                    <p>@category</p>
+                    <h5>@title</h5>
+                    <p>@shortDescription</p>
+                </a>
+        	}
+        }
+        </div>
+        
+        <nav>
+            @if(pageNumber > 1) 
+            {
+                <a href="?page=@(pageNumber - 1)">←</a>
+            }
+            
+            @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+            {
+                if (i == pageNumber){<a class="active item-link" href="#">@i</a>}
+                else {<a class="item-link" href="?page=@i"></a>}
+            }
+
+            @if(pageNumber < Math.Ceiling((decimal)totalItems/itemsPerPage))
+            {
+                <a href="?page=@(pageNumber + 1)">→</a>
+            }
+            
+        </nav>
+    </div>
+</section>
+

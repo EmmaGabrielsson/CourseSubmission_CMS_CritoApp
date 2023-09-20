@@ -1,6 +1,119 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticleDetailPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+@using Umbraco.Cms.Core.Services;
+@inject IUserService UserService;
 @{
-	Layout = "_LayoutWithBredcrumb.cshtml";
+    Layout = "_LayoutWithBredcrumb.cshtml";
+
+    var userService = UserService;
+    var image = Model.Value<IPublishedContent>("articleImage");
 }
+
+<section class="article-detail-section">
+    <div>
+        <div>
+            <h2>@Model.Name()</h2>
+            <div class="article-details">
+                <span>@Model.CreateDate.ToString("MMM dd, yyyy")</span>
+                <span>@Model.Value("articleCategory")</span>
+                <span>@Model.Value("creatorName")</span>
+            </div>
+        </div>
+        <div>
+            <img class="w-100" src="@image.Url()" alt=""/>
+            <p>@Model.Value("articleContent")</p>
+            <div class="tags">
+                @foreach (var tag in Model.Value<IEnumerable<String>>("articleTags"))
+                {
+                    <span>@tag</span>
+                }
+            </div>
+        </div>
+        <aside>
+            <div class="searchbox">
+                <label>search</label>
+            </div>
+        </aside>
+    </div>
+</section>
+@{
+    var itemsPerPage = 3;
+    var pageNumber = 1;
+
+    if (!int.TryParse(Context.Request.Query["page"], out pageNumber))
+    {
+        pageNumber = 1;        
+    }
+	
+	var selection = Umbraco?.Content(Guid.Parse("375dc09f-9d8e-4a68-a309-135d420bef13"))?
+            .ChildrenOfType("articleDetailPage")?
+            .Where(x => x.IsVisible())
+            .OrderByDescending(x => x.CreateDate).ToList();
+            
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
+            
+}
+
+
+<section class="news-section">
+    <div>
+        <p class="red-title">Article & News</p>
+        <div>
+            <h3>Get Every Single Articles & News</h3>
+            <a title="browse articles" target="_blank" href="/news">
+            Browse Articles 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
+            </svg>
+        </a>
+
+        </div>
+        <div class="articles">
+            
+        @if(pagedItems != null){
+        
+            @foreach (var item in pagedItems)
+        	{
+        	    var url = item.Url();
+        	    var date = item.CreateDate;
+        	    var category = item.Value("articleCategory");
+        	    var title = item.Name();
+        	    var shortDescription = item.Value("articleShortDescription");
+        	    
+            	<a href="@url">
+                    <div class="date-container">
+                        <p class="day">@date.ToString("dd")</p>
+                        <p class="month">@date.ToString("MMM")</p>
+                    </div>
+                    <img src="@image?.Url()" alt=""/>
+                    <p>@category</p>
+                    <h5>@title</h5>
+                    <p>@shortDescription</p>
+                </a>
+        	}
+        }
+        </div>
+        
+        <nav>
+            @if(pageNumber > 1) 
+            {
+                <a href="?page=@(pageNumber - 1)">←</a>
+            }
+            
+            @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+            {
+                if (i == pageNumber){<a class="active item-link" href="#">@i</a>}
+                else {<a class="item-link" href="?page=@i"></a>}
+            }
+
+            @if(pageNumber < Math.Ceiling((decimal)totalItems/itemsPerPage))
+            {
+                <a href="?page=@(pageNumber + 1)">→</a>
+            }
+            
+        </nav>
+    </div>
+</section>
