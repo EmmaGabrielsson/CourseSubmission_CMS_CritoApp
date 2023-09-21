@@ -779,6 +779,85 @@ header img {
     display: none;
 }
 
+.article-detail-section {
+    background-color: white;
+}
+
+.article-detail-section div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-bottom: 1rem;
+}
+
+.article-detail-section div div{
+    display: flex;
+    flex-direction: column;
+}
+
+.article-detail-section div div h2 {
+    font-family: "DM Sans";
+    font-size: 45px;
+    font-weight: bold;
+    color: #191919;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.article-detail-section div div .article-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.article-detail-section div div .article-details span{
+    margin-right: 1rem;
+}
+
+.detail-image {
+    width: 100%;
+}
+
+.article-detail-section div aside {
+}
+
+.searchbox {
+    margin-top: 4rem;
+    position: relative;
+}
+
+.searchbox label svg{
+    position: absolute;
+    bottom: 0.9rem;
+    left: 1.3rem;
+}
+
+.searchbox input{
+    height: 45px;
+    border-radius: 40px;
+    padding-left: 40px;
+    background-color: #f3f3f3
+}
+
+.article-detail-section div div div .tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.article-detail-section div div div .tags span{
+    margin-right: 5px;
+    margin-bottom: 10px;
+    background-color: #F3F3F3;
+    border-radius: 40px;
+    padding: 7px 20px;
+}
+
 .news-section {
     background-color: white;
     display: flex;
@@ -797,11 +876,18 @@ header img {
     font-weight: bold;
     color: #191919;
     margin-top: 4rem;
+    margin-bottom: 1rem;
 }
 
 .news-section div .articles {
-    margin: 1rem 1rem 3rem 0;
-    width: 400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.news-section div .articles a {
+    margin-bottom: 1rem;
     position: relative;
 }
 
@@ -843,7 +929,7 @@ header img {
 
 .news-section div .articles a img {
     width: 100%;
-    height: 230px;
+    max-height: 230px;
     margin-bottom: 1rem;
 }
 
@@ -854,6 +940,9 @@ header img {
 }
 .news-section div nav {
     margin-bottom: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .news-section div nav a {
@@ -862,7 +951,6 @@ header img {
     border: 1px solid #00000087;
     font-weight: bold;
     border-radius: 5px;
-    padding: 6px;
     margin: 3px;
 }
 
@@ -1243,6 +1331,17 @@ header img {
         left: 0;
         top: 14rem;    
     }
+
+    .article-detail-section div {
+        flex-direction: row;
+        align-items: flex-start;
+        width: 75%;
+    }
+
+    .article-detail-section div div h2 {
+        text-align: left;
+    }
+
 
     .news-section div {
         width: 75%;

@@ -59,21 +59,22 @@
         <nav>
             @if(pageNumber > 1) 
             {
-                <a href="?page=@(pageNumber - 1)">←</a>
+                <a class="btn" href="?page=@(pageNumber - 1)">&lt;</a>
             }
             
             @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
             {
-                if (i == pageNumber){<a class="active item-link" href="#">@i</a>}
-                else {<a class="item-link" href="?page=@i"></a>}
+                if (i == pageNumber){<a class="active item-link btn disabled bg-dark text-light" href="#">@i</a>}
+                else {<a class="item-link btn" href="?page=@i">@i</a>}
             }
 
             @if(pageNumber < Math.Ceiling((decimal)totalItems/itemsPerPage))
             {
-                <a href="?page=@(pageNumber + 1)">→</a>
+                <a class="btn" href="?page=@(pageNumber + 1)">&gt;</a>
             }
             
         </nav>
     </div>
 </section>
+@await Html.PartialAsync("_SignUpFormSection")
 
