@@ -522,20 +522,21 @@ header img {
 
 .choose-img-container {
     position: relative;
-
+    width: 100%;
 }
 
 .empty-div {
     background-color: #F0EFE9;
-    position: absolute;
-    bottom: 0;
-    right: -4rem;
-    width: 100%;
     height: 400px;
+    width: 100%;
 }
 
 .choose-img-container img {
-    max-width: 600px;
+    width: 85%;
+    position: absolute;
+    top: 3rem;
+    right: 2.5rem;
+
 }
 
 .project-section {
@@ -578,7 +579,7 @@ header img {
 .project-content {
     background-color: white;
     width: 100%;  
-    margin: 0 0 4rem 0;
+    margin: 0.7rem 0 4rem 0;
     border-bottom: 1px solid #19191996;
 }
 
@@ -688,14 +689,17 @@ header img {
 }
 
 .testimonial-section {
-    background-color: white;
-    padding: 4rem 0;
+    background-color: #EDCF87;
+    padding-bottom: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.testimonial-section div {
+.testimonial-section>div {
+    background-color: white;
+    text-align: center;
+    padding: 3rem 0 3rem 0;
     width: 90%;
 }
 
@@ -706,12 +710,28 @@ header img {
     margin-bottom: 2rem;
 }
 
+.testimonial-section > div > div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.testimony {
+    width: 310px;
+    margin: 1rem;
+    text-align: left;
+}
+
 .reviewerbox {
     width: 400px;
     height: 70px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    text-align: left;
 }
 
 .reviewerbox img {
@@ -722,6 +742,7 @@ header img {
 }
 
 .reviewerbox h5 {
+    margin-top: 1rem;
     font-family: "DM Sans";
     font-size: 22px;
     font-weight: bold;
@@ -807,6 +828,7 @@ header img {
     margin-top: 3rem;
     margin-bottom: 1rem;
     text-align: center;
+    padding-right: 2rem;
 }
 
 .article-detail-section div div .article-details{
@@ -1316,12 +1338,19 @@ header img {
         bottom: -8.7rem;
     }
 
+    .empty-div {
+        position: absolute;
+        top: 9rem;
+        right: 0;
+        height: 400px;
+    }
+
     .features-section div {
         width: 75%;
         flex-direction: row;
         padding: 2.5rem;
     }
-    
+
     .features-section div div h3 {
         font-family: "DM Sans";
         font-size: 45px;
@@ -1376,6 +1405,11 @@ header img {
         top: 14rem;    
     }
 
+    .testimonial-section > div {
+        padding: 4rem 2rem 3rem 2rem;
+        width: 75%;
+    }
+
     .article-detail-section div {
         flex-direction: row;
         align-items: flex-start;
@@ -1408,7 +1442,6 @@ header img {
     .contact-section div form {
         padding: 5rem;
         width: 75%;
-        align-items: flex-start;
     }
     
     .signup-section {
