@@ -1,4 +1,7 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    var contactForm = new Crito.Models.ContactForm();
+}
 
         <section class="contact-section">
             <div class="info-container">
@@ -11,8 +14,8 @@
                     </div>
                     <div class="info-content">
                         <h5>Visit us</h5>
-                        <p>Sveavägen 31</p>
-                        <p>111 34 STOCKHOLM</p>
+                        <p>@Model.Value("contactInformationStreetName")</p>
+                        <p>@Model.Value("contactInformationPostalCode") @Model.Value("contactInformationCity")</p>
                     </div>
                 </div>
                 <div class="border">
@@ -23,8 +26,8 @@
                     </div>
                     <div class="info-content">
                         <h5>Call us</h5>
-                        <p>+46 (8) 121 470 50</p>
-                        <p>+46 (8) 121 470 51</p>
+                        <p>@Model.Value("contactInformationPhoneNumber1")</p>
+                        <p>@Model.Value("contactInformationPhoneNumber2")</p>
                     </div>
                 </div>
                 <div class="border">
@@ -36,22 +39,30 @@
                     </div>
                     <div class="info-content">
                         <h5>Email us</h5>
-                        <p>info@crito.com</p>
-                        <p>support@crito.com</p>
+                        <p>@Model.Value("contactInformationEmail1")</p>
+                        <p>@Model.Value("contactInformationEmail2")</p>
                     </div>
                 </div>
             </div>
             <div class="form-div">
-                <form metod="post">
+                <div class="form">
+                @using (Html.BeginUmbracoForm("Index", "Contacts", FormMethod.Post))
+                {
                     <h3>Leave us a message for any information.</h3>
-                    <input placeholder="Name*" required/>
-                    <input placeholder="Email*" required />
-                    <textarea required rows="7" placeholder="Your Message*"></textarea>
-                    <button title="send message" type="submit">Send Message
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <span class="red-title" asp-validation-for="@contactForm.Name"></span>
+                    <input asp-for="@contactForm.Name" type="text" placeholder="Name*"/>
+                    <span class="red-title"  asp-validation-for="@contactForm.Email"></span>
+                    <input asp-for="@contactForm.Email" type="email" placeholder="Email*" />
+                    <span class="red-title" asp-validation-for="@contactForm.Message"></span>
+                    <textarea asp-for="@contactForm.Message" required rows="7" placeholder="Your Message*"></textarea>
+                    <button title="send message" type="submit">
+                        Send Message
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
-                          </svg>
+                        </svg>
                     </button>
-                </form>
+                }
+                </div>
             </div>
         </section>
