@@ -1,7 +1,9 @@
-﻿namespace Crito.Models.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Crito.Models.Entities;
 
 public class SubscriberEntity
-{    
-    public Guid Id { get; set; }
+{
+    [Key]
     public string Email { get; set; } = null!;
 }

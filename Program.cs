@@ -27,8 +27,6 @@ namespace Crito
                     // Repositories
                     services.AddScoped<ContactFormRepo>();
                     services.AddScoped<SubscriberRepo>();
-
-                    // Services
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

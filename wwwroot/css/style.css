@@ -1075,23 +1075,24 @@ header img {
     margin-bottom: 0;
 }
 
-.contact-section div .form {
+.contact-section .form-div .form {
     background-color: #F0EFE9;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: column;
     padding: 2rem;
     width: 100%;
 }
 
-.contact-section div .form h3 {
+.contact-section .form-div .form h3 {
     font-family: "DM Sans";
     font-size: 40px;
     font-weight: bold;
     line-height: 55px;
-    width: 450px;
     text-align: center;
+    width: 100%;
     padding: 0 2rem 2rem 2rem;
 }
 
@@ -1144,20 +1145,20 @@ header img {
     margin-bottom: 1rem;
 }
 
-.signup-section form input {
+.signup-section .form input {
     border-radius: 40px;
     border: none;
     padding: 5px;
     text-align: center;
 }
 
-.signup-section form button {
+.signup-section .form button {
     background-color: #F9D783;
     border: none;
     padding: 5px 15px;
     border-radius: 40px;
 }
-.signup-section form button:hover {
+.signup-section .form button:hover {
     background-color: #f9c442;
 }
 
@@ -1439,7 +1440,7 @@ header img {
         background-color: white;
     }
 
-    .contact-section div .form {
+    .contact-section .form-div .form {
         padding: 5rem;
         width: 75%;
     }
