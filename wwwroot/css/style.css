@@ -255,22 +255,27 @@ header img {
     font-weight: bold;
 }
 
-.features-section div div div{
-    flex-direction: column;
-    padding: 0;
-}
-
-.features-section div div div svg{
+.features-section div div svg{
     padding: 12px;
 }
 
-.features-section div div div h5{
+.features-info-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.features-info-container div {
+    max-width: 300px;
+    padding: 0;
+}
+
+.features-info-container div h5 {
     font-family: "DM Sans";
     font-size: 20px;
     font-weight: bold;
 }
 
-.features-section div div div p{
+.features-info-container div p {
     font-family: "Inter";
     font-size: 16px;
 }
