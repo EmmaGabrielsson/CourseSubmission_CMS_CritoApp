@@ -1,49 +1,39 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿@using Umbraco.Cms.Core.Models.Blocks
+@using Umbraco.Cms.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    
+    var blockListItems = Model.Value<IEnumerable<BlockListItem>>("footerBlockList").Select(x => x.Content);
+}
+
 
 <footer>
     <section class="footer-section">
             <div class="logo">
                 <img src="~/images/logos/logotype-white.svg" alt="crito logotype">
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
+                <p>@Model.Value("footerText")</p>
             </div>
-            <div>
-                <h5>Company</h5>
-                <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Works</a></li>
-                    <li><a href="#">Career</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5>Help</h5>
-                <ul>
-                    <li><a href="#">Customer Support</a></li>
-                    <li><a href="#">Delivery Details</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5>Resources</h5>
-                <ul>
-                    <li><a href="#">Free eBooks</a></li>
-                    <li><a href="#">Development Tutorial</a></li>
-                    <li><a href="#">Youtube Playlist</a></li>
-                    <li><a href="#">Youtube Playlist</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5>Link</h5>
-                <ul>
-                    <li><a href="#">Free eBooks</a></li>
-                    <li><a href="#">Development Tutorial</a></li>
-                    <li><a href="#">How to - Blogs</a></li>
-                    <li><a href="#">Youtube Playlist</a></li>
-                </ul>
-            </div>
+            
+             @foreach (var item in blockListItems) 
+            {
+                <div>
+                    <h5>@item.Value("footerItemHeading")</h5>
+                    
+                    @{
+                        var links = item.Value<IEnumerable<Link>>("footerItemUrlLinks");
+                        if (links.Any())
+                        {
+                            <ul>
+                                @foreach (var link in links)
+                                {
+                                    <li><a href="@link.Url" target="@link.Target">@link.Name</a></li>
+                                }
+                            </ul>
+                        }
+                    }
+                </div>
+            }
+            
             <img id="footer-lines" src="~/images/effects/background-lines-white-right.svg" alt="background lines">
     </section>
     <div id="copyright-container">
