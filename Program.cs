@@ -1,37 +1,34 @@
-
 using Crito.Contexts;
 using Crito.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Umbraco.Cms.Core.Services;
 
-namespace Crito
-{
-    public class Program
-    {        
+namespace Crito;
 
-        public static void Main(string[] args)
-            => CreateHostBuilder(args)
-                .Build()
-                .Run();
+public class Program
+{        
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureUmbracoDefaults()
-                .ConfigureServices((IServiceCollection services) =>
-                {
-                    var builder = WebApplication.CreateBuilder(args);
+    public static void Main(string[] args)
+        => CreateHostBuilder(args)
+            .Build()
+            .Run();
 
-                    // Contexts
-                    services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlDatabase")));
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureUmbracoDefaults()
+            .ConfigureServices((IServiceCollection services) =>
+            {
+                var builder = WebApplication.CreateBuilder(args);
 
-                    // Repositories
-                    services.AddScoped<ContactFormRepo>();
-                    services.AddScoped<SubscriberRepo>();
-                })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStaticWebAssets();
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
+                // Contexts
+                services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlDatabase")));
+
+                // Repositories
+                services.AddScoped<ContactFormRepo>();
+                services.AddScoped<SubscriberRepo>();
+            })
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStaticWebAssets();
+                webBuilder.UseStartup<Startup>();
+            });
 }

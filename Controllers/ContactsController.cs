@@ -30,10 +30,10 @@ public class ContactsController : SurfaceController
 
         using var _mail = new MailService("no-reply@crito.com", "smtp.crito.com", 587, "contactform@crito.com", "BytMig123!");
         //to sender
-        _mail.SendAsync(contactForm.Email, "Your contact request was recieved.", "Hi, your request was recieved and we will be in contact with you as soon as possible.").ConfigureAwait(false);
+        await _mail.SendAsync(contactForm.Email, "Your contact request was recieved.", "Hi, your request was recieved and we will be in contact with you as soon as possible.").ConfigureAwait(false);
 
         //to us
-        _mail.SendAsync("umbraco@crito.com", $"{contactForm.Name} sent a contact request.", contactForm.Message).ConfigureAwait(false);
+        await _mail.SendAsync("umbraco@crito.com", $"{contactForm.Name} sent a contact request.", contactForm.Message).ConfigureAwait(false);
 
         var contactFormSubmitted = await _contactRepo.GetDataAsync(x => x.Name == contactForm.Name && x.Email == contactForm.Email && x.Message == contactForm.Message);
         if (contactFormSubmitted == null)

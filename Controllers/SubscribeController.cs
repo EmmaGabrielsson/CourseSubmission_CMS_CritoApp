@@ -16,7 +16,7 @@ namespace Crito.Controllers
         private readonly SubscriberRepo _subscriberRepo;
         public SubscribeController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider, SubscriberRepo subscriberRepo) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
         {
-            this._subscriberRepo = subscriberRepo;
+            _subscriberRepo = subscriberRepo;
         }
 
         public async Task<IActionResult> Index(SubscribeForm subscribeForm)

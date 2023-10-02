@@ -1,5 +1,5 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticleDetailPage>
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ArticleDetailPage>
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Cms.Core.Models.PublishedContent;
 @using Umbraco.Cms.Core.Services;
@@ -73,7 +73,7 @@
 }
 
 
-<section class="news-section small-article-section">
+<section id="small-article-section" class="news-section small-article-section">
     <div>
         <p class="red-title mt-5">Article & News</p>
         <div class="article-title-container w-100">
@@ -135,3 +135,4 @@
         </nav>
     </div>
 </section>
+<script src="~/scripts/article-events.js"></script>

@@ -3,7 +3,7 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     
-    var blockListItems = Model.Value<IEnumerable<BlockListItem>>("footerBlockList").Select(x => x.Content);
+    var blockListItems = Model.Value<IEnumerable<BlockListItem>>("footerBlockList")!.Select(x => x.Content);
 }
 
 
@@ -21,7 +21,7 @@
                     
                     @{
                         var links = item.Value<IEnumerable<Link>>("footerItemUrlLinks");
-                        if (links.Any())
+                        if (links != null)
                         {
                             <ul>
                                 @foreach (var link in links)
@@ -37,7 +37,7 @@
             <img id="footer-lines" src="~/images/effects/background-lines-white-right.svg" alt="background lines">
     </section>
     <div id="copyright-container">
-        <p>© 2023 Crito - Consulting Company Inc. All Rights Reserved.</p>
+        <p>© @DateTime.Now.ToString("yyyy") Crito - Consulting Company Inc. All Rights Reserved.</p>
         <div id="menu-icons">
             <a class="text-light text-decoration-none" target="_blank" href="https://facebook.com">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">

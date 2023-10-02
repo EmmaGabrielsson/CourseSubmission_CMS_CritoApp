@@ -1,7 +1,7 @@
 ﻿@using Umbraco.Cms.Core.Models.Blocks
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-    var blockListItems = Model.Value<IEnumerable<BlockListItem>>("featureServicesBlockList").Select(x => x.Content);
+    var blockListItems = Model.Value<IEnumerable<BlockListItem>>("featureServicesBlockList")!.Select(x => x.Content);
 }
 
 
@@ -18,16 +18,17 @@
                     </a>
                 </div>
                 <div class="features-info-container">
-                    
-                    @foreach (var item in blockListItems) 
+                    @if (blockListItems != null)
                     {
-                        <div>
-                            @item.Value("featureServicesItemIconSVG")
-                            <h5>@item.Value("featureServicesItemHeading")</h5>
-                            <p>@item.Value("featureServicesItemDescription")</p>
-                        </div>
+                        @foreach (var item in blockListItems)
+                        {
+                            <div>
+                                @item.Value("featureServicesItemIconSVG")
+                                <h5>@item.Value("featureServicesItemHeading")</h5>
+                                <p>@item.Value("featureServicesItemDescription")</p>
+                            </div>
+                        }
                     }
-                    
                 </div>
             </div>
         </section>

@@ -76,7 +76,7 @@
                     {
                             @foreach (var item in selection)
                             {
-                                <li class="nav-item @(item.IsAncestorOrSelf(Model) ? "active" : null)">
+                                <li class="nav-item @(item.IsAncestorOrSelf(Model) ? "activee" : null)">
                                     <a class="nav-link" href="@item.Url(PublishedUrlProvider)">@item.Name</a>
                                 </li>
                             }
