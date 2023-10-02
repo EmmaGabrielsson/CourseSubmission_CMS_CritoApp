@@ -229,7 +229,7 @@ header img {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 100%;
+    max-width: 460px;
     padding: 1rem;
 }
 
@@ -259,6 +259,7 @@ header img {
 }
 
 .features-info-container {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -266,8 +267,9 @@ header img {
 }
 
 .features-info-container div {
-    max-width: 280px;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 220px;
 }
 
 .features-info-container div h5 {
@@ -649,15 +651,17 @@ header img {
 }
 
 .team-members {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-start;
-    width: 100%;
 }
 
 .team-members div {
-    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
 }
 
 .team-members div img {
@@ -722,7 +726,7 @@ header img {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .testimony {
@@ -738,11 +742,13 @@ header img {
     flex-direction: row;
     align-items: center;
     text-align: left;
+    overflow: hidden;
 }
 
 .reviewerbox img {
     width: 70px;
-    height: 70px;
+    height: 100%;
+    object-fit: cover;
     border-radius: 40px;
     margin-right: 15px;
 }
@@ -1355,7 +1361,6 @@ header img {
     .features-section div {
         width: 75%;
         flex-direction: row;
-        padding: 2.5rem;
     }
 
     .features-section div div h3 {
