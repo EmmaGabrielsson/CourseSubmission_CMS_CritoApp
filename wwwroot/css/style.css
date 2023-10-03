@@ -21,7 +21,7 @@ header {
 }
 
 .activee {
-    text-decoration: underline;
+    border-bottom: 1px solid black;
 }
 
 .top-container {
@@ -642,6 +642,16 @@ header img {
     width: 90%;
 }
 
+.team-section div nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.team-section div nav a {
+    margin: 3px;
+}
+
 .team-section div .title-div {
     display: flex;
     flex-direction: row;
@@ -652,10 +662,10 @@ header img {
 
 .team-members {
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
     justify-content: space-between;
-    align-items: flex-start;
 }
 
 .team-members div {
@@ -1415,6 +1425,10 @@ header img {
         position: absolute;
         left: 0;
         top: 14rem;    
+    }
+
+    .team-members {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     .testimonial-section > div {

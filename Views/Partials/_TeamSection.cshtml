@@ -2,10 +2,24 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     var blockListItems = Model.Value<IEnumerable<BlockListItem>>("teamMembersBlockList")!.Select(x => x.Content);
+    
+    var itemsPerPage = 4;
+    var pageNumber = 1;
+
+    if (!int.TryParse(Context.Request.Query["slide"], out pageNumber))
+    {
+        pageNumber = 1;        
+    }
+    
+    var selection = blockListItems.ToList();
+            
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage);
+
 }
 
 
-        <section class="team-section">
+        <section id="team-section" class="team-section">
             <div>
                 <p class="red-title">Meet Our Team</p>
                 <div class="title-div">
@@ -18,10 +32,10 @@
                     </a>
                 </div>
                 <div class="team-members">
-                    
-                    @if (blockListItems != null)
+
+            @if (pagedItems != null)
                     {
-                        @foreach (var item in blockListItems)
+                        @foreach (var item in pagedItems)
                         {
                             <div>
                             @{
@@ -40,5 +54,28 @@
                     }
                     
                 </div>
+                <nav class="small-article-nav">
+                    @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+                    {
+                        if (i == pageNumber)
+                        {
+                            <a class="active border-0 btn disabled p-0" href="?slide=@i">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                  <circle cx="8" cy="8" r="8"/>
+                                </svg>
+                            </a>
+                        } else 
+                        {
+                            <a class=" btn p-0 border-0" href="?slide=@i">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                  <circle cx="8" cy="8" r="8"/>
+                                </svg>
+                            </a>
+                        }
+                    }
+                </nav>
             </div>
         </section>
+        <script src="~/scripts/team-events.js"></script>
+
+        
