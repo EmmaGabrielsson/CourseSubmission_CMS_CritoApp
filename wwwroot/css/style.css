@@ -223,10 +223,11 @@ header img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 0.5rem;
 }
 
-.features-section div div{
+.features-section>div>div{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -243,6 +244,7 @@ header img {
     text-decoration: none;
     color: black;
     text-align: center;
+    width: 100%;
 }
 
 .features-section div div a:hover {
@@ -255,20 +257,18 @@ header img {
     font-weight: bold;
 }
 
-.features-section div div svg{
-    padding: 12px;
+.features-section div div svg {
+    padding: 10px;
 }
 
 .features-info-container {
-    width: 100%;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 .features-info-container div {
-    display: flex;
-    flex-direction: column;
-    max-width: 200px;
+    display: block;
+    width: 220px;
 }
 
 .features-info-container div h5 {
@@ -1373,6 +1373,7 @@ header img {
     .features-section div {
         width: 75%;
         flex-direction: row;
+        align-items: flex-start;
     }
 
     .features-section div div h3 {
