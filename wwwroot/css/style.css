@@ -222,10 +222,11 @@ header img {
     width: 90%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding: 0.5rem;
 }
 
-.features-section>div>div{
+.features-section div div{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -260,16 +261,14 @@ header img {
 
 .features-info-container {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
 }
 
 .features-info-container div {
     display: flex;
     flex-direction: column;
-    width: 220px;
+    max-width: 200px;
 }
 
 .features-info-container div h5 {
@@ -661,21 +660,24 @@ header img {
 }
 
 .team-members {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    justify-content: space-between;
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .team-members div {
+    width: 280px !important;
     display: flex;
     flex-direction: column;
-    max-width: 350px;
+    overflow: hidden;
 }
 
 .team-members div img {
     width: 100%;
+    height: 350px;
+    object-fit: cover;
 }
 
 .team-members div h5 {
@@ -1428,7 +1430,11 @@ header img {
     }
 
     .team-members {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        flex-wrap: nowrap;
+    }
+
+    .team-members div {
+        margin: 0 10px;
     }
 
     .testimonial-section > div {
