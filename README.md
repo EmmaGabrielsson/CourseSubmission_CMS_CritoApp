@@ -43,5 +43,7 @@ To run the project, follow these steps:
 
 6. Access the application in your web browser using the provided URL or localhost address.
 
-Happy visit and enjoy exploring the project!
+
+## Happy visit and enjoy exploring the project!
+
 
