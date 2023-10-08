@@ -1141,6 +1141,10 @@ header img {
     background-color: #f9c442;
 }
 
+.contact-response-div {
+    background-color: #F0EFE9 !important;
+}
+
 .map-section {
     background-color: white;
     padding-top: 4rem;

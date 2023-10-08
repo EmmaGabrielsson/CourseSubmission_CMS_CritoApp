@@ -34,7 +34,6 @@ namespace Crito.Controllers
             }
             ModelState.AddModelError("", "You are already a subscriber");
             return CurrentUmbracoPage();
-            //return LocalRedirect(contactForm.RedirectUrl ?? "/");
         }
     }
 }

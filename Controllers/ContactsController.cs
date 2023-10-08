@@ -27,24 +27,26 @@ public class ContactsController : SurfaceController
         if(!ModelState.IsValid)
             return CurrentUmbracoPage();
 
-
+        /*
         using var _mail = new MailService("no-reply@crito.com", "smtp.crito.com", 587, "contactform@crito.com", "BytMig123!");
         //to sender
         await _mail.SendAsync(contactForm.Email, "Your contact request was recieved.", "Hi, your request was recieved and we will be in contact with you as soon as possible.").ConfigureAwait(false);
 
         //to us
         await _mail.SendAsync("umbraco@crito.com", $"{contactForm.Name} sent a contact request.", contactForm.Message).ConfigureAwait(false);
+        */
 
         var contactFormSubmitted = await _contactRepo.GetDataAsync(x => x.Name == contactForm.Name && x.Email == contactForm.Email && x.Message == contactForm.Message);
         if (contactFormSubmitted == null)
         {
             await _contactRepo.AddDataAsync(contactForm);
             ModelState.AddModelError("", "Thank you for contacting us, we get back to you as soon as possible!");
-            return CurrentUmbracoPage();
+            //return CurrentUmbracoPage();
+            return LocalRedirect(contactForm.RedirectUrl ?? "/");
 
         }
         ModelState.AddModelError("", "You have already sent this contact-form to us");
         return CurrentUmbracoPage();
-        //return LocalRedirect(contactForm.RedirectUrl ?? "/");
     }
 }
+

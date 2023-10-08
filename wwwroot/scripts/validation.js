@@ -17,7 +17,6 @@ for (let element of validationElements) {
     })
 }
 
-
 function textValidator(target, minLength) {
     if (target.value.length < minLength) {
 
@@ -35,3 +34,4 @@ function emailValidator(target) {
     else
         document.getElementById(`${target.id}`).previousElementSibling.innerHTML = ""
 }
+
