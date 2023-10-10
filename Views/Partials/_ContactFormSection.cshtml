@@ -46,16 +46,16 @@
             </div>
             <div class="form-div">
                 <div class="form">
-                @using (Html.BeginUmbracoForm("Index", "Contacts", FormMethod.Post))
-                {
+            @using (Html.BeginUmbracoForm("Index", "Contacts", FormMethod.Post, new { id = "contact-form"}))
+            {
                     <h3>@Model.Value("contactFormTitle")</h3>
                     <div class="contact-response-div" asp-validation-summary="ModelOnly"></div>
                     <span class="red-title" asp-validation-for="@contactForm.Name"> </span>
-                    <input asp-for="@contactForm.Name" type="text" required placeholder="Name*"/>
+                    <input asp-for="@contactForm.Name" type="text" placeholder="Name*"/>
                     <span class="red-title" asp-validation-for="@contactForm.Email"> </span>
                     <input asp-for="@contactForm.Email" type="email" placeholder="Email*" />
                     <span class="red-title" asp-validation-for="@contactForm.Message"> </span>
-                    <textarea required asp-for="@contactForm.Message" rows="7" placeholder="Your Message*"></textarea>
+                    <textarea asp-for="@contactForm.Message" rows="7" placeholder="Your Message*"></textarea>
                     <button title="send message" type="submit">
                         Send Message
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">

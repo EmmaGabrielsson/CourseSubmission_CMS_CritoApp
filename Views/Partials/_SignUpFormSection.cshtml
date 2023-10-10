@@ -5,7 +5,7 @@
         <section id="subscribe" class="signup-section">
             <h3>Get News Updates By Signup</h3>
             <div class="form" method="post">
-             @using (Html.BeginUmbracoForm("Index", "Subscribe", FormMethod.Post))
+        @using (Html.BeginUmbracoForm("Index", "Subscribe", FormMethod.Post, new { id = "subscribe-form" }))
                 {
                 <div asp-validation-summary="ModelOnly"></div>
                 <span class="red-title"  asp-validation-for="@subscribeForm.Email"></span>
